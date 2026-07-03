@@ -1,0 +1,1046 @@
+/* ==========================================================================
+   1. VARIABLES & DESIGN TOKENS (GALAXY THEME)
+   ========================================================================== */
+:root {
+    /* Paleta de colores */
+    --bg-deep-space: #030014;
+    --bg-space-dark: #08071a;
+    --bg-card-glass: rgba(13, 11, 38, 0.6);
+    --border-glass: rgba(124, 58, 237, 0.15);
+    --border-glass-hover: rgba(6, 182, 212, 0.4);
+
+    --color-primary: #7c3aed;
+    /* Violeta */
+    --color-primary-light: #9f7aea;
+    --color-secondary: #06b6d4;
+    /* Cian */
+    --color-secondary-light: #22d3ee;
+    --color-accent: #d946ef;
+    /* Magenta */
+
+    --text-main: #f1f5f9;
+    /* Blanco pizarra */
+    --text-muted: #94a3b8;
+    /* Gris azulado */
+    --text-bright: #ffffff;
+
+    --glow-primary: rgba(124, 58, 237, 0.5);
+    --glow-secondary: rgba(6, 182, 212, 0.5);
+    /* Tipografía */
+    --font-sans: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-mono: 'Fira Code', monospace;
+
+    /* Transiciones y efectos */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --border-radius-sm: 8px;
+    --border-radius-md: 16px;
+    --border-radius-lg: 24px;
+}
+
+/* ==========================================================================
+   2. REGLAS DE ACCESIBILIDAD Y MODO ALTO CONTRASTE (WCAG 2.1 AA)
+   ========================================================================== */
+/* Saltar al contenido principal (Keyboard navigation) */
+.skip-link {
+    position: absolute;
+    top: -100px;
+    left: 20px;
+    background: var(--color-secondary);
+    color: var(--bg-deep-space);
+    padding: 12px 24px;
+    z-index: 9999;
+    font-weight: 600;
+    border-radius: var(--border-radius-sm);
+    transition: top 0.2s ease;
+    text-decoration: none;
+}
+
+.skip-link:focus {
+    top: 20px;
+    outline: 3px solid var(--color-primary-light);
+}
+
+/* Estilo universal de enfoque (Focus Indicator) */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid var(--color-secondary);
+    outline-offset: 4px;
+}
+
+/* Variables de Alto Contraste */
+body.high-contrast {
+    --bg-deep-space: #000000;
+    --bg-space-dark: #000000;
+    --bg-card-glass: #000000;
+    --border-glass: #ffffff;
+    --border-glass-hover: #ffff00;
+    --color-primary: #ffff00;
+    /* Amarillo de alto contraste */
+    --color-primary-light: #ffff00;
+    --color-secondary: #00ffff;
+    /* Cian puro */
+    --color-secondary-light: #00ffff;
+    --color-accent: #ffffff;
+    --text-main: #ffffff;
+    --text-muted: #ffffff;
+    --text-bright: #ffffff;
+    background-image: none !important;
+}
+
+body.high-contrast * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+    backdrop-filter: none !important;
+    filter: none !important;
+}
+
+body.high-contrast a {
+    text-decoration: underline;
+}
+
+body.high-contrast .btn-secondary {
+    border: 2px solid #ffffff;
+}
+
+body.high-contrast .skill-progress {
+    background-color: #00ffff !important;
+    border: 1px solid #ffffff;
+}
+
+/* Reducir movimiento para usuarios con sensibilidad visual */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    .stars-background {
+        display: none;
+    }
+}
+
+/* ==========================================================================
+   3. ESTRUCTURA BASE
+   ========================================================================== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    font-family: var(--font-sans);
+    background-color: var(--bg-deep-space);
+    color: var(--text-main);
+    line-height: 1.6;
+    overflow-x: hidden;
+    position: relative;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Fondo animado */
+.stars-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Contenedor centralizado */
+.section-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 24px;
+}
+
+.max-w-sm {
+    max-width: 650px;
+}
+
+/* Títulos de sección */
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--text-bright);
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.section-lead {
+    font-size: 1.25rem;
+    color: var(--color-secondary-light);
+    margin-bottom: 1.5rem;
+}
+
+/* Botones de acción */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 28px;
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: var(--border-radius-sm);
+    text-decoration: none;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    border: 2px solid transparent;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    color: var(--text-bright);
+    box-shadow: 0 0 15px var(--glow-primary);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    transform: translateY(-2px);
+    box-shadow: 0 0 25px var(--glow-secondary);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--text-bright);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: var(--color-secondary);
+}
+
+.btn-block {
+    display: flex;
+    width: 100%;
+}
+
+/* Gradiente de texto decorativo */
+.gradient-text {
+    background: linear-gradient(135deg, var(--color-primary-light), var(--color-secondary-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* ==========================================================================
+   4. CABECERA & NAVEGACIÓN
+   ========================================================================== */
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: rgba(3, 0, 20, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-glass);
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo-link {
+    text-decoration: none;
+}
+
+.logo-text {
+    font-family: var(--font-mono);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-bright);
+    letter-spacing: -1px;
+}
+
+/* Menú en lista */
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 32px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--text-muted);
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: var(--transition-smooth);
+    position: relative;
+    padding: 8px 0;
+}
+
+.nav-link:hover,
+.nav-link:focus {
+    color: var(--text-bright);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--color-secondary);
+    transition: var(--transition-smooth);
+}
+
+.nav-link:hover::after,
+.nav-link:focus::after {
+    width: 100%;
+}
+
+/* Botón menú móvil */
+.menu-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+}
+
+.hamburger {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--text-bright);
+    position: relative;
+    transition: var(--transition-smooth);
+}
+
+.hamburger::before,
+.hamburger::after {
+    content: '';
+    position: absolute;
+    width: 24px;
+    height: 2px;
+    background: var(--text-bright);
+    transition: var(--transition-smooth);
+}
+
+.hamburger::before {
+    top: -6px;
+}
+
+.hamburger::after {
+    top: 6px;
+}
+
+/* Controladores de accesibilidad */
+.accessibility-controls {
+    display: flex;
+    align-items: center;
+}
+
+.control-btn {
+    background: transparent;
+    border: 1px solid var(--border-glass);
+    color: var(--text-muted);
+    padding: 8px;
+    border-radius: var(--border-radius-sm);
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.control-btn:hover,
+.control-btn:focus {
+    color: var(--text-bright);
+    border-color: var(--color-secondary);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.icon {
+    width: 20px;
+    height: 20px;
+}
+
+/* ==========================================================================
+   5. SECCIÓN HERO (ESTÉTICA IMPACTANTE)
+   ========================================================================== */
+.hero-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 100vh;
+    padding: 120px 24px 80px;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 48px;
+}
+
+.hero-content {
+    flex: 1;
+    max-width: 650px;
+}
+
+.hero-badge {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    background: rgba(124, 58, 237, 0.15);
+    color: var(--color-primary-light);
+    border: 1px solid var(--border-glass);
+    padding: 6px 16px;
+    border-radius: 50px;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1.15;
+    color: var(--text-bright);
+    margin-bottom: 1.5rem;
+}
+
+.hero-subtitle {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+}
+
+.hero-subtitle strong {
+    color: var(--text-bright);
+}
+
+.hero-actions {
+    display: flex;
+    gap: 16px;
+}
+
+/* Orbe de ilustración galáctica interactiva */
+.hero-illustration {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 400px;
+}
+
+.galaxy-orb {
+    width: 250px;
+    height: 250px;
+    background: radial-gradient(circle, var(--color-primary), var(--color-secondary));
+    border-radius: 50%;
+    filter: blur(10px);
+    box-shadow: 0 0 60px var(--glow-primary);
+    animation: orbFloat 6s ease-in-out infinite alternate;
+}
+
+.galaxy-ring {
+    position: absolute;
+    width: 350px;
+    height: 120px;
+    border: 2px solid var(--border-glass-hover);
+    border-radius: 50%;
+    transform: rotate(-15deg);
+    animation: ringRotate 12s linear infinite;
+    pointer-events: none;
+}
+
+/* ==========================================================================
+   6. SECCIÓN SOBRE MÍ
+   ========================================================================== */
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 64px;
+    align-items: center;
+}
+
+.about-image-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.about-avatar {
+    width: 100%;
+    max-width: 350px;
+    border-radius: var(--border-radius-lg);
+    border: 1px solid var(--border-glass-hover);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    transition: var(--transition-smooth);
+}
+
+.about-avatar:hover {
+    transform: scale(1.02);
+    box-shadow: 0 15px 40px var(--glow-primary);
+}
+
+.about-info p {
+    margin-bottom: 1rem;
+    color: var(--text-muted);
+}
+
+.about-info p strong {
+    color: var(--text-bright);
+}
+
+.about-stats {
+    display: flex;
+    gap: 24px;
+    margin-top: 2rem;
+}
+
+.stat-card {
+    flex: 1;
+    background: var(--bg-card-glass);
+    border: 1px solid var(--border-glass);
+    padding: 16px;
+    border-radius: var(--border-radius-md);
+    text-align: center;
+    backdrop-filter: blur(8px);
+}
+
+.stat-num {
+    display: block;
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--color-secondary-light);
+}
+
+.stat-label {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+/* ==========================================================================
+   7. SECCIÓN TRAYECTORIA (TIMELINE)
+   ========================================================================== */
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    padding-left: 32px;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(to bottom, var(--color-primary), var(--color-secondary), transparent);
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 48px;
+}
+
+.timeline-marker {
+    position: absolute;
+    left: -37px;
+    top: 8px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--color-secondary);
+    border: 4px solid var(--bg-deep-space);
+    transition: var(--transition-smooth);
+}
+
+.timeline-item:hover .timeline-marker {
+    background: var(--color-accent);
+    transform: scale(1.3);
+}
+
+.timeline-content {
+    background: var(--bg-card-glass);
+    border: 1px solid var(--border-glass);
+    padding: 24px;
+    border-radius: var(--border-radius-md);
+    backdrop-filter: blur(8px);
+    transition: var(--transition-smooth);
+}
+
+.timeline-content:hover {
+    border-color: var(--border-glass-hover);
+    transform: translateX(4px);
+}
+
+.timeline-date {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--color-secondary-light);
+    margin-bottom: 0.5rem;
+}
+
+.timeline-role {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--text-bright);
+}
+
+.timeline-company {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+
+.timeline-desc {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+/* ==========================================================================
+   8. SECCIÓN PROYECTOS (GRID MODERNO)
+   ========================================================================== */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 32px;
+}
+
+.project-card {
+    background: var(--bg-card-glass);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--border-radius-md);
+    overflow: hidden;
+    backdrop-filter: blur(8px);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    transition: var(--transition-smooth);
+}
+
+.project-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--border-glass-hover);
+    box-shadow: 0 10px 30px var(--glow-primary);
+}
+
+.project-image-wrapper {
+    height: 200px;
+    background: linear-gradient(135deg, #150f3d, #08071a);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid var(--border-glass);
+}
+
+.project-placeholder {
+    font-family: var(--font-mono);
+    font-size: 1.25rem;
+    color: var(--color-secondary-light);
+    font-weight: 600;
+}
+
+.project-info {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.project-card-title {
+    font-size: 1.4rem;
+    color: var(--text-bright);
+    margin-bottom: 0.75rem;
+}
+
+.project-desc {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+}
+
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    list-style: none;
+    margin-bottom: 1.5rem;
+}
+
+.project-tags li {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 4px 10px;
+    border-radius: 4px;
+    color: var(--text-muted);
+}
+
+.project-links {
+    display: flex;
+    gap: 16px;
+}
+
+.project-link {
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-secondary-light);
+    transition: var(--transition-smooth);
+}
+
+.project-link:hover,
+.project-link:focus {
+    color: var(--text-bright);
+    text-shadow: 0 0 8px var(--glow-secondary);
+}
+
+/* ==========================================================================
+   9. SECCIÓN HABILIDADES (INTERACTIVE METERS)
+   ========================================================================== */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 48px;
+}
+
+.skills-category {
+    background: var(--bg-card-glass);
+    border: 1px solid var(--border-glass);
+    padding: 32px;
+    border-radius: var(--border-radius-md);
+    backdrop-filter: blur(8px);
+}
+
+.skills-category h3 {
+    font-size: 1.5rem;
+    color: var(--text-bright);
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid var(--border-glass);
+    padding-bottom: 8px;
+}
+
+.skills-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.skill-name {
+    display: block;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-bright);
+    margin-bottom: 6px;
+}
+
+.skill-bar {
+    width: 100%;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+}
+
+.skill-progress {
+    height: 100%;
+    background: linear-gradient(to right, var(--color-primary), var(--color-secondary));
+    border-radius: 4px;
+    transition: width 1.5s cubic-bezier(0.1, 0.8, 0.2, 1);
+}
+
+/* ==========================================================================
+   10. SECCIÓN CONTACTO (FORMULARIO ACCESIBLE)
+   ========================================================================== */
+.contact-section {
+    background: linear-gradient(180deg, transparent, var(--bg-space-dark));
+}
+
+.contact-subtitle {
+    color: var(--text-muted);
+    margin-bottom: 3rem;
+}
+
+.contact-buttons-container {
+    background: var(--bg-card-glass);
+    border: 1px solid var(--border-glass);
+    padding: 40px;
+    border-radius: var(--border-radius-md);
+    backdrop-filter: blur(8px);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    max-width: 480px;
+    margin: 0 auto;
+}
+
+.contact-buttons-container .btn {
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.contact-btn-highlight {
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-btn-highlight::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: var(--border-radius-sm);
+    box-shadow: inset 0 0 12px rgba(0, 170, 255, 0.4);
+    pointer-events: none;
+    transition: var(--transition-smooth);
+}
+
+.contact-btn-highlight:hover::after {
+    box-shadow: inset 0 0 20px rgba(0, 255, 255, 0.8);
+}
+
+.btn-icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+}
+
+/* ==========================================================================
+   11. PIE DE PÁGINA (FOOTER)
+   ========================================================================== */
+.site-footer {
+    border-top: 1px solid var(--border-glass);
+    background-color: var(--bg-space-dark);
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-wrap: wrap;
+    gap: 24px;
+}
+
+.copyright {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.social-nav ul {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+.social-link {
+    color: var(--text-muted);
+    transition: var(--transition-smooth);
+}
+
+.social-link:hover,
+.social-link:focus {
+    color: var(--color-secondary-light);
+    transform: translateY(-2px);
+}
+
+.social-link .icon {
+    width: 24px;
+    height: 24px;
+}
+
+/* ==========================================================================
+   12. ANIMACIONES KEYFRAMES
+   ========================================================================== */
+@keyframes orbFloat {
+    0% {
+        transform: translateY(0) scale(1);
+    }
+
+    100% {
+        transform: translateY(-15px) scale(1.05);
+    }
+}
+
+@keyframes ringRotate {
+    0% {
+        transform: rotate(-15deg) rotateY(0deg);
+    }
+
+    100% {
+        transform: rotate(-15deg) rotateY(360deg);
+    }
+}
+
+/* ==========================================================================
+   13. MEDIA QUERIES (RESPONSIVO)
+   ========================================================================== */
+@media (max-width: 992px) {
+    .hero-section {
+        flex-direction: column-reverse;
+        text-align: center;
+        padding-top: 140px;
+        gap: 32px;
+    }
+
+    .hero-content {
+        max-width: 100%;
+    }
+
+    .hero-title {
+        font-size: 2.8rem;
+    }
+
+    .hero-actions {
+        justify-content: center;
+    }
+
+    .hero-illustration {
+        height: 300px;
+    }
+
+    .galaxy-orb {
+        width: 180px;
+        height: 180px;
+    }
+
+    .galaxy-ring {
+        width: 260px;
+        height: 90px;
+    }
+
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .about-image-wrapper {
+        order: -1;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-container {
+        padding: 12px 20px;
+    }
+
+    /* Menú Hamburguesa Móvil */
+    .menu-toggle {
+        display: block;
+        order: 3;
+    }
+
+    .nav-menu {
+        position: fixed;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        height: calc(100vh - 60px);
+        background-color: rgba(3, 0, 20, 0.98);
+        backdrop-filter: blur(16px);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 40px;
+        transform: translateX(100%);
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        border-top: 1px solid var(--border-glass);
+    }
+
+    .nav-menu.active {
+        transform: translateX(0);
+    }
+
+    .nav-link {
+        font-size: 1.5rem;
+    }
+
+    .menu-toggle[aria-expanded="true"] .hamburger {
+        background: transparent;
+    }
+
+    .menu-toggle[aria-expanded="true"] .hamburger::before {
+        transform: rotate(45deg);
+        top: 0;
+    }
+
+    .menu-toggle[aria-expanded="true"] .hamburger::after {
+        transform: rotate(-45deg);
+        top: 0;
+    }
+
+    .accessibility-controls {
+        margin-left: auto;
+        margin-right: 16px;
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .about-stats {
+        flex-wrap: wrap;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 2.2rem;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .hero-actions .btn {
+        width: 100%;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .contact-buttons-container {
+        padding: 24px;
+    }
+}

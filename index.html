@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO Básico -->
+  <title>SrRiv | Software Engineer | DevOps &amp; Systems Architecture</title>
+  <meta name="description"
+    content="Portafolio profesional de (SrRiv), Ingeniero de Software especializado en DevOps, infraestructura, automatización, backend y despliegues en la nube.">
+  <meta name="keywords"
+    content="DevOps, SysAdmin, Backend, Software Engineer, Docker, Linux, Bash Scripting, Python, Django, SQL, PostgreSQL, Google Cloud, AWS, Ciberseguridad, SrRiv">
+  <meta name="author" content="SrRiv">
+  <link rel="canonical" href="https://srriv.com/">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://srriv.com/">
+  <meta property="og:title" content="SrRiv | Software Engineer | DevOps &amp; Systems Architecture">
+  <meta property="og:description"
+    content="Diseño e implementación de infraestructura robusta, automatización de despliegues y sistemas backend de alta disponibilidad.">
+  <meta property="og:image" content="https://srriv.com/logo.svg">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://srriv.com/">
+  <meta property="twitter:title" content="SrRiv | Software Engineer | DevOps &amp; Systems Architecture">
+  <meta property="twitter:description"
+    content="Diseño e implementación de infraestructura robusta, automatización de despliegues y sistemas backend de alta disponibilidad.">
+  <meta property="twitter:image" content="https://srriv.com/logo.svg">
+
+  <!-- Favicon y Temas -->
+  <link rel="icon" href="logo.svg" type="image/svg+xml">
+  <meta name="theme-color" content="#030014">
+
+  <!-- Precarga y Optimización de Fuentes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Outfit:wght@300;400;600;800&display=swap"
+    rel="stylesheet">
+
+  <!-- Estilos Principales -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <!-- Enlace de salto de accesibilidad (WCAG 2.1) -->
+  <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+
+  <!-- Fondo animado interactivo (Estrellas / Nebulosa) -->
+  <div class="stars-background" aria-hidden="true"></div>
+
+  <!-- Cabecera y Navegación Principal -->
+  <header class="site-header">
+    <div class="header-container">
+      <a href="#" class="logo-link" aria-label="SrRiv Portafolio - Inicio">
+        <span class="logo-text" aria-hidden="true">&lt;SrRiv/&gt;</span>
+      </a>
+
+      <!-- Menú de Navegación -->
+      <nav class="main-nav" aria-label="Navegación principal">
+        <button class="menu-toggle" aria-expanded="false" aria-controls="nav-menu"
+          aria-label="Abrir menú de navegación">
+          <span class="hamburger" aria-hidden="true"></span>
+        </button>
+        <ul id="nav-menu" class="nav-menu">
+          <li><a href="#sobre-mi" class="nav-link">Sobre mí</a></li>
+          <li><a href="#experiencia" class="nav-link">Experiencia</a></li>
+          <li><a href="#proyectos" class="nav-link">Proyectos</a></li>
+          <li><a href="#habilidades" class="nav-link">Habilidades</a></li>
+          <li><a href="#contacto" class="nav-link">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <!-- Selector de Contraste / Modo de Accesibilidad -->
+      <div class="accessibility-controls">
+        <button id="contrast-toggle" class="control-btn" aria-label="Alternar alto contraste"
+          title="Alternar alto contraste">
+          <svg class="icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m0-12.728l.707.707m12.728 12.728l.707.707M12 8a4 4 0 100 8 4 4 0 000-8z" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Contenido Principal -->
+  <main id="main-content" tabindex="-1">
+
+    <!-- Sección Hero (Bienvenida) -->
+    <section class="hero-section" aria-label="Sección de bienvenida">
+      <div class="hero-content">
+        <span class="hero-badge">DevOps, Infraestructura &amp; Arquitectura Backend</span>
+        <h1 class="hero-title">
+          Diseño <span class="gradient-text">Arquitecturas Resilientes</span>, Automatización Óptima y Sistemas de <span
+            class="gradient-text">Alta Disponibilidad</span>.
+        </h1>
+        <p class="hero-subtitle">
+          Hola, soy <strong>SrRiv</strong>. Ingeniero de Software enfocado en la construcción de infraestructura
+          robusta, automatización en la nube y optimización de bases de datos relacionales. Especializado en entornos
+          Linux, containerización y despliegues eficientes.
+        </p>
+        <div class="hero-actions">
+          <a href="#proyectos" class="btn btn-primary">Ver Proyectos</a>
+          <a href="#contacto" class="btn btn-secondary">Charlemos</a>
+        </div>
+      </div>
+      <div class="hero-illustration" aria-hidden="true">
+        <div class="galaxy-orb"></div>
+        <div class="galaxy-ring"></div>
+      </div>
+    </section>
+
+    <!-- Sección Sobre Mí -->
+    <section id="sobre-mi" class="about-section" aria-labelledby="about-heading">
+      <div class="section-container">
+        <div class="about-grid">
+          <div class="about-image-wrapper">
+            <img src="logo.svg"
+              alt="Logotipo SrRiv - S Cyber-Lightning, diseño futurista en gradiente morado y cian con rayos de neón"
+              class="about-avatar" loading="lazy">
+          </div>
+          <div class="about-info">
+            <h2 id="about-heading" class="section-title">Sobre Mí</h2>
+            <p class="section-lead">Ingeniería y automatización orientadas al rendimiento y seguridad.</p>
+            <p>
+              Soy estudiante y pasante de <strong>Ingeniería de Software</strong> en la <strong>Universidad Autónoma de
+                Zacatecas (UAZ)</strong>. Mi enfoque de desarrollo es altamente autodidacta, impulsado por una constante
+              curiosidad por aprender nuevas tecnologías y metodologías de ingeniería.
+            </p>
+            <p>
+              Cuento con un interés especial en la ciberseguridad básica, la administración de redes y la optimización
+              de flujos de trabajo en el ciclo de vida del software mediante código limpio y seguro. Creo firmemente que
+              la solidez de un sistema radica en la simplicidad de su arquitectura, buenas prácticas y despliegues
+              seguros.
+            </p>
+            <div class="about-stats">
+              <div class="stat-card">
+                <span class="stat-num">UAZ</span>
+                <span class="stat-label">Ingeniería de Software</span>
+              </div>
+              <div class="stat-card">
+                <span class="stat-num">100%</span>
+                <span class="stat-label">Autodidacta</span>
+              </div>
+              <div class="stat-card">
+                <span class="stat-num">Bash/Linux</span>
+                <span class="stat-label">Core Tech</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección Experiencia -->
+    <section id="experiencia" class="experience-section" aria-labelledby="experience-heading">
+      <div class="section-container">
+        <h2 id="experience-heading" class="section-title text-center">Trayectoria Profesional</h2>
+        <div class="timeline">
+
+          <article class="timeline-item" aria-labelledby="exp-title-1">
+            <div class="timeline-marker" aria-hidden="true"></div>
+            <div class="timeline-content">
+              <span class="timeline-date"><time datetime="2026">2026</time></span>
+              <h3 id="exp-title-1" class="timeline-role">Ingeniero de Despliegue &amp; Sistemas</h3>
+              <p class="timeline-company">Tribunal de Justicia Alternativa del Estado de Zacatecas</p>
+              <ul
+                style="padding-left: 20px; margin-top: 10px; color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; list-style-type: disc;">
+                <li>Configuración y despliegue de equipos críticos y servicios de red local.</li>
+                <li>Automatización de tareas de respaldo y recolección de logs mediante scripts en Bash.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="timeline-item" aria-labelledby="exp-title-2">
+            <div class="timeline-marker" aria-hidden="true"></div>
+            <div class="timeline-content">
+              <span class="timeline-date"><time datetime="2025">2025</time></span>
+              <h3 id="exp-title-2" class="timeline-role">Arquitecto de Software &amp; Backend</h3>
+              <p class="timeline-company">Protección Civil del Estado de Zacatecas</p>
+              <ul
+                style="padding-left: 20px; margin-top: 10px; color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; list-style-type: disc;">
+                <li>Diseño arquitectónico de un Sistema de Información Geográfica (SIG) orientado a emergencias
+                  utilizando Docker sobre servidores Linux.</li>
+                <li>Modelado de bases de datos relacionales y optimización de servicios backend para garantizar la
+                  resiliencia del sistema bajo el patrón MVT.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="timeline-item" aria-labelledby="exp-title-3">
+            <div class="timeline-marker" aria-hidden="true"></div>
+            <div class="timeline-content">
+              <span class="timeline-date"><time datetime="2025">2025</time> - Actualidad</span>
+              <h3 id="exp-title-3" class="timeline-role">Desarrollador Independiente (Mobile &amp; Cloud)</h3>
+              <p class="timeline-company">Google Play Store</p>
+              <ul
+                style="padding-left: 20px; margin-top: 10px; color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; list-style-type: disc;">
+                <li>Diseño y desarrollo de aplicaciones móviles de alto rendimiento utilizando Flutter, Firebase y
+                  servicios de Google Cloud con arquitecturas limpias.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="timeline-item" aria-labelledby="exp-title-4">
+            <div class="timeline-marker" aria-hidden="true"></div>
+            <div class="timeline-content">
+              <span class="timeline-date"><time datetime="2024">2024</time> - <time datetime="2025">2025</time></span>
+              <h3 id="exp-title-4" class="timeline-role">Desarrollador de Sistemas</h3>
+              <p class="timeline-company">Purificadora Local</p>
+              <ul
+                style="padding-left: 20px; margin-top: 10px; color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; list-style-type: disc;">
+                <li>Desarrollo de sistemas web de gestión de inventarios, optimización de bases de datos relacionales y
+                  generación de reportes con SQL y React.</li>
+              </ul>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección Proyectos -->
+    <section id="proyectos" class="projects-section" aria-labelledby="projects-heading">
+      <div class="section-container">
+        <h2 id="projects-heading" class="section-title text-center">Proyectos Destacados</h2>
+        <div class="projects-grid">
+
+          <article class="project-card" aria-labelledby="proj-title-1">
+            <div class="project-image-wrapper">
+              <div class="project-placeholder" aria-hidden="true">
+                <span>&lt;SIG PC-Zac/&gt;</span>
+              </div>
+            </div>
+            <div class="project-info">
+              <h3 id="proj-title-1" class="project-card-title">Sistema de Información Geográfica</h3>
+              <p class="project-desc">
+                Diseño y despliegue del SIG para Protección Civil del Estado de Zacatecas, orquestado con Docker sobre
+                infraestructuras Linux y con un backend optimizado bajo el patrón MVT.
+              </p>
+              <ul class="project-tags" aria-label="Tecnologías usadas">
+                <li>Docker</li>
+                <li>Linux</li>
+                <li>Django MVT</li>
+                <li>PostgreSQL</li>
+              </ul>
+              <div class="project-links">
+                <span class="project-link-disabled" style="color: var(--text-muted); font-size: 0.85rem;">Proyecto
+                  Gubernamental</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card" aria-labelledby="proj-title-2">
+            <div class="project-image-wrapper">
+              <div class="project-placeholder" aria-hidden="true">
+                <span>&lt;Tribunal Backups/&gt;</span>
+              </div>
+            </div>
+            <div class="project-info">
+              <h3 id="proj-title-2" class="project-card-title">Automatización de Backups &amp; Logs</h3>
+              <p class="project-desc">
+                Scripts y herramientas en Bash para el respaldo periódico y la recolección de logs de auditoría en la
+                red local del Tribunal de Justicia Alternativa.
+              </p>
+              <ul class="project-tags" aria-label="Tecnologías usadas">
+                <li>Bash Scripting</li>
+                <li>Linux</li>
+                <li>Django MVT</li>
+                <li>Docker</li>
+                <li>SQL</li>
+                <li>Docker</li>
+              </ul>
+              <div class="project-links">
+                <span class="project-link-disabled" style="color: var(--text-muted); font-size: 0.85rem;">Proyecto
+                  Institucional</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card" aria-labelledby="proj-title-3">
+            <div class="project-image-wrapper">
+              <div class="project-placeholder" aria-hidden="true">
+                <span>&lt;Flutter Apps/&gt;</span>
+              </div>
+            </div>
+            <div class="project-info">
+              <h3 id="proj-title-3" class="project-card-title">Desarrollos Mobile (Play Store)</h3>
+              <p class="project-desc">
+                Creación y publicación de aplicaciones móviles independientes, implementando Flutter, Firebase y GCP
+                para garantizar alta disponibilidad y arquitecturas limpias.
+              </p>
+              <ul class="project-tags" aria-label="Tecnologías usadas">
+                <li>Flutter</li>
+                <li>Firebase</li>
+                <li>Google Cloud</li>
+                <li>Dart</li>
+              </ul>
+              <div class="project-links">
+                <span class="project-link-disabled" style="color: var(--text-muted); font-size: 0.85rem;">Proyectos en
+                  Desarrollo / Publicación</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección Habilidades -->
+    <section id="habilidades" class="skills-section" aria-labelledby="skills-heading">
+      <div class="section-container">
+        <h2 id="skills-heading" class="section-title text-center">Arsenal Técnico</h2>
+        <div class="skills-grid">
+
+          <div class="skills-category">
+            <h3>Infraestructura &amp; Cloud</h3>
+            <ul class="skills-list">
+              <li>
+                <span class="skill-name">Linux (Administración de servidores)</span>
+                <div class="skill-bar" aria-label="Nivel de habilidad: 95%">
+                  <div class="skill-progress" style="width: 95%;"></div>
+                </div>
+              </li>
+              <li>
+                <span class="skill-name">Docker (Containerización)</span>
+                <div class="skill-bar" aria-label="Nivel de habilidad: 90%">
+                  <div class="skill-progress" style="width: 90%;"></div>
+                </div>
+              </li>
+              <li>
+                <span class="skill-name">Google Cloud &amp; AWS</span>
+                <div class="skill-bar" aria-label="Nivel de habilidad: 85%">
+                  <div class="skill-progress" style="width: 85%;"></div>
+                </div>
+              </li>
+              <li>
+                <span class="skill-name">Redes (TCP/IP)</span>
+                <div class="skill-bar" aria-label="Nivel de habilidad: 88%">
+                  <div class="skill-progress" style="width: 88%;"></div>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="skills-category">
+            <h3>Automatización &amp; Backend</h3>
+            <ul class="skills-list">
+              <li>
+                <span class="skill-name">Bash Scripting</span>
+                <div class="skill-bar" aria-label="Nivel de habilidad: 92%">
+                  <div class="skill-progress" style="width: 92%;"></div>
+                </div>
+              </li>
+              <li>
+                <span class="skill-name">Python (Django)</span>
+                <div class="skill-bar" aria-label="Nivel de habilidad: 88%">
+                  <div class="skill-progress" style="width: 88%;"></div>
+                </div>
+              </li>
+              <li>
+                <span class="skill-name">Java</span>
+                <div class="skill-bar" aria-label="Nivel de habilidad: 80%">
+                  <div class="skill-progress" style="width: 80%;"></div>
+                </div>
+              </li>
+              <li>
+                <span class="skill-name">Dart (Flutter)</span>
+                <div class="skill-bar" aria-label="Nivel de habilidad: 85%">
+                  <div class="skill-progress" style="width: 85%;"></div>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="skills-category">
+            <h3>Bases de Datos &amp; Herramientas</h3>
+            <ul class="skills-list">
+              <li>
+                <span class="skill-name">SQL (PostgreSQL, MySQL)</span>
+                <div class="skill-bar" aria-label="Nivel de habilidad: 90%">
+                  <div class="skill-progress" style="width: 90%;"></div>
+                </div>
+              </li>
+              <li>
+                <span class="skill-name">MongoDB &amp; Firebase</span>
+                <div class="skill-bar" aria-label="Nivel de habilidad: 85%">
+                  <div class="skill-progress" style="width: 85%;"></div>
+                </div>
+              </li>
+              <li>
+                <span class="skill-name">Git (Control de versiones)</span>
+                <div class="skill-bar" aria-label="Nivel de habilidad: 95%">
+                  <div class="skill-progress" style="width: 95%;"></div>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="skills-category">
+            <h3>Ciberseguridad</h3>
+            <ul class="skills-list">
+              <li>
+                <span class="skill-name">Gestión de logs</span>
+                <div class="skill-bar" aria-label="Nivel de habilidad: 85%">
+                  <div class="skill-progress" style="width: 85%;"></div>
+                </div>
+              </li>
+              <li>
+                <span class="skill-name">Seguridad perimetral básica</span>
+                <div class="skill-bar" aria-label="Nivel de habilidad: 80%">
+                  <div class="skill-progress" style="width: 80%;"></div>
+                </div>
+              </li>
+              <li>
+                <span class="skill-name">Respaldos automatizados</span>
+                <div class="skill-bar" aria-label="Nivel de habilidad: 92%">
+                  <div class="skill-progress" style="width: 92%;"></div>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección Contacto -->
+    <section id="contacto" class="contact-section" aria-labelledby="contact-heading">
+      <div class="section-container max-w-sm">
+        <h2 id="contact-heading" class="section-title text-center">Iniciemos un Proyecto</h2>
+        <p class="contact-subtitle text-center">
+          ¿Tienes un proyecto en mente o quieres conversar sobre infraestructura, DevOps o desarrollo de software?
+          Conéctate conmigo.
+        </p>
+
+        <!-- Redes Profesionales y Enlaces de Contacto -->
+        <div class="contact-buttons-container">
+          <a href="https://forms.gle/zkhCtoEws7i8uWbTA" target="_blank" rel="noopener noreferrer"
+            class="btn btn-primary btn-block contact-btn-highlight"
+            aria-label="Llenar Formulario de Contacto (abre en nueva pestaña)">
+            <svg class="icon btn-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+              viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+            Llenar Formulario de Contacto
+          </a>
+
+          <a href="https://github.com/SirRiv" target="_blank" rel="noopener noreferrer"
+            class="btn btn-secondary btn-block" aria-label="Explorar mi GitHub (abre en nueva pestaña)">
+            <svg class="icon btn-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+              viewBox="0 0 24 24">
+              <path fill-rule="evenodd"
+                d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+                clip-rule="evenodd" />
+            </svg>
+            Explorar mi GitHub
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <p class="copyright">&copy; <span id="current-year">2026</span> SrRiv. Todos los derechos reservados. Diseñado
+        bajo principios de accesibilidad universal.</p>
+    </div>
+  </footer>
+
+  <!-- Script interactivo mínimo y optimizado -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Configuración de Año Actual en el footer
+      const yearSpan = document.getElementById('current-year');
+      if (yearSpan) {
+        yearSpan.textContent = new Date().getFullYear();
+      }
+
+      // Funcionalidad del Menú Hamburguesa Móvil
+      const menuToggle = document.querySelector('.menu-toggle');
+      const navMenu = document.getElementById('nav-menu');
+
+      if (menuToggle && navMenu) {
+        menuToggle.addEventListener('click', () => {
+          const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+          menuToggle.setAttribute('aria-expanded', !isExpanded);
+          navMenu.classList.toggle('active');
+        });
+
+        // Cerrar menú al hacer click en algún enlace
+        navMenu.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', () => {
+            menuToggle.setAttribute('aria-expanded', 'false');
+            navMenu.classList.remove('active');
+          });
+        });
+      }
+
+      // Modo de Accesibilidad / Alto Contraste
+      const contrastToggle = document.getElementById('contrast-toggle');
+      if (contrastToggle) {
+        contrastToggle.addEventListener('click', () => {
+          document.body.classList.toggle('high-contrast');
+          const isHighContrast = document.body.classList.contains('high-contrast');
+          contrastToggle.setAttribute('aria-label', isHighContrast ? 'Desactivar alto contraste' : 'Alternar alto contraste');
+          localStorage.setItem('high-contrast', isHighContrast);
+        });
+
+        // Persistir preferencia
+        if (localStorage.getItem('high-contrast') === 'true') {
+          document.body.classList.add('high-contrast');
+          contrastToggle.setAttribute('aria-label', 'Desactivar alto contraste');
+        }
+      }
+
+      // Animación interactiva de constelaciones y estrellas con soporte DPR
+      const starsBg = document.querySelector('.stars-background');
+      if (starsBg) {
+        const canvas = document.createElement('canvas');
+        starsBg.appendChild(canvas);
+        const ctx = canvas.getContext('2d');
+
+        let width, height;
+        let stars = [];
+        const numStars = 200; // Mayor densidad de estrellas
+
+        // Rastreo de la posición del cursor
+        let mouse = { x: null, y: null, active: false };
+
+        function resize() {
+          const dpr = window.devicePixelRatio || 1;
+          width = canvas.width = window.innerWidth * dpr;
+          height = canvas.height = window.innerHeight * dpr;
+          ctx.scale(dpr, dpr);
+
+          if (stars.length === 0) {
+            for (let i = 0; i < numStars; i++) {
+              const rand = Math.random();
+              let colorPrefix = 'rgba(255, 255, 255, '; // Blanco
+              if (rand < 0.22) colorPrefix = 'rgba(6, 182, 212, ';      // 22% cian
+              else if (rand < 0.38) colorPrefix = 'rgba(168, 85, 247, '; // 16% púrpura
+
+              stars.push({
+                x: Math.random() * window.innerWidth,
+                y: Math.random() * window.innerHeight,
+                radius: Math.random() * 1.7 + 0.5,   // Radio de 0.5px a 2.2px
+                vx: Math.random() * 0.8 - 0.4,       // Velocidad autónoma lenta
+                vy: Math.random() * 0.8 - 0.4,
+                baseAlpha: Math.random() * 0.55 + 0.35, // Opacidad más alta y visible (0.35 a 0.9)
+                colorPrefix: colorPrefix
+              });
+            }
+          }
+        }
+
+        window.addEventListener('resize', () => {
+          resize();
+          stars.forEach(star => {
+            if (star.x > window.innerWidth) star.x = Math.random() * window.innerWidth;
+            if (star.y > window.innerHeight) star.y = Math.random() * window.innerHeight;
+          });
+        });
+
+        window.addEventListener('mousemove', (e) => {
+          mouse.x = e.clientX;
+          mouse.y = e.clientY;
+          mouse.active = true;
+        });
+
+        window.addEventListener('mouseleave', () => {
+          mouse.active = false;
+        });
+
+        function animate() {
+          const isHighContrast = document.body.classList.contains('high-contrast');
+
+          ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+
+          // 1. Actualizar y dibujar estrellas autónomas
+          stars.forEach(star => {
+            star.x += star.vx;
+            star.y += star.vy;
+
+            // Retorno envolvente de pantalla (Wrapping) para densidad uniforme
+            if (star.x < 0) star.x = window.innerWidth;
+            if (star.x > window.innerWidth) star.x = 0;
+            if (star.y < 0) star.y = window.innerHeight;
+            if (star.y > window.innerHeight) star.y = 0;
+
+            ctx.beginPath();
+            ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+
+            if (isHighContrast) {
+              ctx.fillStyle = '#ffffff';
+            } else {
+              ctx.fillStyle = star.colorPrefix + star.baseAlpha + ')';
+            }
+            ctx.fill();
+          });
+
+          // 2. Dibujar constelaciones (Líneas de conexión)
+          for (let i = 0; i < stars.length; i++) {
+            const s1 = stars[i];
+
+            // Conexión estrella -> Cursor (El ratón actúa como nodo extra)
+            if (mouse.active) {
+              const dx = mouse.x - s1.x;
+              const dy = mouse.y - s1.y;
+              const dist = Math.sqrt(dx * dx + dy * dy);
+
+              if (dist < 120) {
+                const alpha = (1 - dist / 120) * 0.35; // Opacidad más alta para conexiones del cursor
+                ctx.lineWidth = 0.5;
+
+                if (isHighContrast) {
+                  ctx.strokeStyle = '#00ffff'; // Cian en alto contraste
+                  ctx.lineWidth = 1;
+                } else {
+                  ctx.strokeStyle = `rgba(0, 191, 255, ${alpha})`; // Azul eléctrico brillante
+                }
+
+                ctx.beginPath();
+                ctx.moveTo(s1.x, s1.y);
+                ctx.lineTo(mouse.x, mouse.y);
+                ctx.stroke();
+              }
+            }
+
+            // Conexión estrella -> estrella (Bucle indexado optimizado O(N²/2))
+            for (let j = i + 1; j < stars.length; j++) {
+              const s2 = stars[j];
+              const dx = s2.x - s1.x;
+              const dy = s2.y - s1.y;
+              const dist = Math.sqrt(dx * dx + dy * dy);
+
+              if (dist < 100) {
+                const alpha = (1 - dist / 100) * 0.25; // Opacidad más alta para conexiones entre estrellas
+                ctx.lineWidth = 0.5;
+
+                if (isHighContrast) {
+                  ctx.strokeStyle = '#ffff00'; // Amarillo en alto contraste
+                  ctx.lineWidth = 1;
+                } else {
+                  ctx.strokeStyle = `rgba(0, 191, 255, ${alpha})`; // Azul eléctrico brillante
+                }
+
+                ctx.beginPath();
+                ctx.moveTo(s1.x, s1.y);
+                ctx.lineTo(s2.x, s2.y);
+                ctx.stroke();
+              }
+            }
+          }
+
+          requestAnimationFrame(animate);
+        }
+
+        resize();
+        animate();
+      }
+    });
+  </script>
+</body>
+
+</html>
