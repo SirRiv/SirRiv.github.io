@@ -614,6 +614,16 @@ body {
     font-size: 0.95rem;
 }
 
+/* Lista de logros dentro de cada item del timeline */
+.timeline-list {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin-top: 10px;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
 /* ==========================================================================
    8. SECCIÓN PROYECTOS (GRID MODERNO)
    ========================================================================== */
@@ -714,6 +724,13 @@ body {
 .project-link:focus {
     color: var(--text-bright);
     text-shadow: 0 0 8px var(--glow-secondary);
+}
+
+/* Etiqueta para proyectos no publicados o privados */
+.project-link-disabled {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    cursor: default;
 }
 
 /* ==========================================================================
