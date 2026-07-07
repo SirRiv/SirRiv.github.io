@@ -112,7 +112,6 @@ function initStarsBackground() {
   const STAR_CONNECT_DIST = 100;
 
   let width;
-  let height;
   let stars = [];
   const mouse = { x: null, y: null, active: false };
 
@@ -146,13 +145,15 @@ function initStarsBackground() {
 
   /**
    * Ajusta el canvas al tamaño de la ventana con soporte DPR.
+   * Usa setTransform para evitar acumulación de escala en cada resize.
    * Solo inicializa las estrellas en la primera llamada.
    */
   function resize() {
     const dpr = window.devicePixelRatio || 1;
     width = canvas.width = window.innerWidth * dpr;
-    height = canvas.height = window.innerHeight * dpr;
-    ctx.scale(dpr, dpr);
+    canvas.height = window.innerHeight * dpr;
+    // Reset total de la matriz antes de escalar para evitar drift acumulado
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
     if (stars.length === 0) {
       for (let i = 0; i < NUM_STARS; i++) {
@@ -162,14 +163,19 @@ function initStarsBackground() {
   }
 
   /**
-   * Reposiciona estrellas fuera de los límites al redimensionar.
+   * Versión con debounce del handler de resize para evitar
+   * thrashing de layout en redimensionados rápidos.
    */
+  let resizeTimer;
   function handleResize() {
-    resize();
-    stars.forEach((star) => {
-      if (star.x > window.innerWidth) star.x = Math.random() * window.innerWidth;
-      if (star.y > window.innerHeight) star.y = Math.random() * window.innerHeight;
-    });
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      resize();
+      stars.forEach((star) => {
+        if (star.x > window.innerWidth) star.x = Math.random() * window.innerWidth;
+        if (star.y > window.innerHeight) star.y = Math.random() * window.innerHeight;
+      });
+    }, 150);
   }
 
   /**
@@ -284,14 +290,20 @@ function initStarsBackground() {
 /**
  * Lee el atributo `data-level` de cada `.skill-progress` y aplica
  * el ancho correspondiente vía JS, eliminando la necesidad de
- * estilos inline en el HTML.
+ * estilos inline en el HTML. Valida que el valor sea numérico y
+ * esté dentro del rango permitido (0–100).
  */
 function initSkillBars() {
   document.querySelectorAll('.skill-progress[data-level]').forEach((bar) => {
-    const level = bar.getAttribute('data-level');
-    if (level) {
-      bar.style.width = `${level}%`;
+    const raw = bar.getAttribute('data-level');
+    const level = parseFloat(raw);
+
+    if (!Number.isFinite(level) || level < 0 || level > 100) {
+      console.warn(`[initSkillBars] data-level inválido: "${raw}" en`, bar);
+      return;
     }
+
+    bar.style.width = `${level}%`;
   });
 }
 
@@ -301,11 +313,17 @@ function initSkillBars() {
 
 /**
  * Ejecuta todas las funcionalidades cuando el DOM está listo.
+ * Respeta `prefers-reduced-motion`: si el usuario ha indicado preferencia
+ * por menor movimiento, el canvas animado no se inicializa.
  */
 document.addEventListener('DOMContentLoaded', () => {
   initCurrentYear();
   initMobileMenu();
   initHighContrast();
   initSkillBars();
-  initStarsBackground();
+
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!prefersReducedMotion) {
+    initStarsBackground();
+  }
 });

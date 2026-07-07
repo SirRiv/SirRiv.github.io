@@ -2,35 +2,34 @@
    1. VARIABLES & DESIGN TOKENS (GALAXY THEME)
    ========================================================================== */
 :root {
-    /* Paleta de colores */
+    /* --- Paleta de colores --- */
     --bg-deep-space: #030014;
     --bg-space-dark: #08071a;
     --bg-card-glass: rgba(13, 11, 38, 0.6);
     --border-glass: rgba(124, 58, 237, 0.15);
     --border-glass-hover: rgba(6, 182, 212, 0.4);
 
-    --color-primary: #7c3aed;
-    /* Violeta */
+    /* Primarios */
+    --color-primary: #7c3aed;        /* Violeta */
     --color-primary-light: #9f7aea;
-    --color-secondary: #06b6d4;
-    /* Cian */
+    --color-secondary: #06b6d4;      /* Cian */
     --color-secondary-light: #22d3ee;
-    --color-accent: #d946ef;
-    /* Magenta */
+    --color-accent: #d946ef;         /* Magenta */
 
-    --text-main: #f1f5f9;
-    /* Blanco pizarra */
-    --text-muted: #94a3b8;
-    /* Gris azulado */
+    /* Texto */
+    --text-main: #f1f5f9;            /* Blanco pizarra */
+    --text-muted: #94a3b8;           /* Gris azulado */
     --text-bright: #ffffff;
 
+    /* Brillos */
     --glow-primary: rgba(124, 58, 237, 0.5);
     --glow-secondary: rgba(6, 182, 212, 0.5);
+
     /* Tipografía */
     --font-sans: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     --font-mono: 'Fira Code', monospace;
 
-    /* Transiciones y efectos */
+    /* Transiciones y radios */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --border-radius-sm: 8px;
     --border-radius-md: 16px;
@@ -238,7 +237,9 @@ body {
 .gradient-text {
     background: linear-gradient(135deg, var(--color-primary-light), var(--color-secondary-light));
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
+    color: transparent; /* Fallback para navegadores sin soporte */
 }
 
 /* ==========================================================================
@@ -609,11 +610,6 @@ body {
     margin-bottom: 0.75rem;
 }
 
-.timeline-desc {
-    color: var(--text-muted);
-    font-size: 0.95rem;
-}
-
 /* Lista de logros dentro de cada item del timeline */
 .timeline-list {
     list-style-type: disc;
@@ -815,16 +811,6 @@ body {
     margin: 0 auto;
 }
 
-.contact-buttons-container .btn {
-    text-align: center;
-    width: 100%;
-    box-sizing: border-box;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-}
-
 .contact-btn-highlight {
     position: relative;
     overflow: hidden;
@@ -876,28 +862,6 @@ body {
 .copyright {
     font-size: 0.9rem;
     color: var(--text-muted);
-}
-
-.social-nav ul {
-    display: flex;
-    list-style: none;
-    gap: 20px;
-}
-
-.social-link {
-    color: var(--text-muted);
-    transition: var(--transition-smooth);
-}
-
-.social-link:hover,
-.social-link:focus {
-    color: var(--color-secondary-light);
-    transform: translateY(-2px);
-}
-
-.social-link .icon {
-    width: 24px;
-    height: 24px;
 }
 
 /* ==========================================================================
