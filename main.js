@@ -321,9 +321,135 @@ document.addEventListener('DOMContentLoaded', () => {
   initMobileMenu();
   initHighContrast();
   initSkillBars();
+  initLanguageSwitch();
 
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (!prefersReducedMotion) {
     initStarsBackground();
   }
 });
+
+// ============================================================
+// 7. SWITCH DE IDIOMA (ES/EN)
+// ============================================================
+
+const translations = {
+  en: {
+    ".skip-link": "Skip to main content",
+    ".nav-menu li:nth-child(1) a": "About Me",
+    ".nav-menu li:nth-child(2) a": "Experience",
+    ".nav-menu li:nth-child(3) a": "Projects",
+    ".nav-menu li:nth-child(4) a": "Skills",
+    ".nav-menu li:nth-child(5) a": "Contact",
+    ".hero-badge": "DevOps, Infrastructure & Backend Architecture",
+    ".hero-title": "Designing <span class=\"gradient-text\">Resilient Architectures</span>, Optimal Automation and <span class=\"gradient-text\">High Availability</span> Systems.",
+    ".hero-subtitle": "Hi, I'm <strong>SrRiv</strong>. Software Engineer focused on building robust infrastructure, cloud automation, and relational database optimization. Specialized in Linux environments, containers, and efficient deployments.",
+    ".hero-actions a.btn-primary": "View Projects",
+    ".hero-actions a.btn-secondary": "Let's Chat",
+    "#about-heading": "About Me",
+    ".about-info .section-lead": "Engineering and automation driven by performance and security.",
+    ".about-info p:nth-of-type(2)": "I am a <strong>Software Engineering</strong> student at the <strong>Universidad Autónoma de Zacatecas (UAZ)</strong>. My development approach is highly self-taught, driven by a constant curiosity to learn new technologies and engineering methodologies.",
+    ".about-info p:nth-of-type(3)": "I have a special interest in basic cybersecurity, network administration, and optimizing software lifecycle workflows through clean and secure code. <strong>I firmly believe</strong> that a system's robustness lies in the simplicity of its architecture, good practices, and secure deployments.",
+    ".stat-card:nth-child(1) .stat-label": "Software Engineering",
+    ".stat-card:nth-child(2) .stat-label": "Self-Taught",
+    "#experience-heading": "Professional Trajectory",
+    "#exp-title-1 + p": "Tribunal de Justicia Administrativa del Estado de Zacatecas",
+    "#exp-title-1 ~ ul": "<li>Backend development using Django's MVT pattern.</li><li>Implementation of unit tests, acceptance tests with Behave/Selenium, and code coverage analysis.</li><li>Docker containers to guarantee deployment consistency.</li>",
+    "#exp-title-2": "Deployment & Systems Engineer",
+    "#exp-title-2 + p": "Infuzac",
+    "#exp-title-2 ~ ul": "<li>Email host configuration and user management.</li><li>Design and development of the official Infuzac website (infuzac.com).</li>",
+    "#exp-title-3": "Software & Backend Architect",
+    "#exp-title-3 + p": "Protección Civil del Estado de Zacatecas",
+    "#exp-title-3 ~ ul": "<li>Architectural design of an emergency-oriented Geographic Information System (GIS) using Docker on Linux servers.</li><li>Relational database modeling and backend service optimization to ensure system resilience under the MVT pattern.</li>",
+    "#exp-title-4": "Independent Developer (Mobile & Cloud)",
+    "#exp-title-4 ~ ul": "<li>Design and development of high-performance mobile applications using Flutter, Firebase, and Google Cloud services with clean architectures.</li>",
+    ".timeline article:nth-child(5) h3": "Systems Developer",
+    ".timeline article:nth-child(5) p": "Local Water Treatment Plant",
+    ".timeline article:nth-child(5) ul": "<li>Development of web-based inventory management systems, relational database optimization, and report generation with SQL and React.</li>",
+    "#projects-heading": "Featured Projects",
+    "#proj-title-1": "Geographic Information System",
+    "#proj-title-1 + p": "Design and deployment of the GIS for Civil Protection of the State of Zacatecas, orchestrated with Docker on Linux infrastructures and with a backend optimized under the MVT pattern.",
+    "#proj-title-1 ~ div .project-link-disabled": "Government Project",
+    "#proj-title-2": "Inventory Management System",
+    "#proj-title-2 + p": "Administrative platform developed under Django's MVT pattern, designed for efficient asset control. Implemented using a containerized architecture with Docker and Docker Compose to ensure consistent environments. The project includes a rigorous automated testing suite (unit and acceptance with Behave/Selenium) to ensure software integrity and quality.",
+    "#proj-title-2 ~ div .project-link": "View on GitHub",
+    "#proj-title-3": "Mobile Development (Play Store)",
+    "#proj-title-3 + p": "Creation and publication of independent mobile applications, implementing Flutter, Firebase, and GCP to guarantee high availability and clean architectures.",
+    "#proj-title-3 ~ div .project-link": "View on GitHub",
+    "#skills-heading": "Technical Arsenal",
+    ".skills-category:nth-child(1) h3": "Infrastructure & Cloud",
+    ".skills-category:nth-child(1) li:nth-child(1) .skill-name": "Linux (System Administration)",
+    ".skills-category:nth-child(1) li:nth-child(2) .skill-name": "Docker (Containers)",
+    ".skills-category:nth-child(1) li:nth-child(4) .skill-name": "Networking (TCP/IP)",
+    ".skills-category:nth-child(2) h3": "Automation & Backend",
+    ".skills-category:nth-child(3) h3": "Databases & Tools",
+    ".skills-category:nth-child(3) li:nth-child(3) .skill-name": "Git (Version Control)",
+    ".skills-category:nth-child(4) h3": "Cybersecurity",
+    ".skills-category:nth-child(4) li:nth-child(1) .skill-name": "Log Management",
+    ".skills-category:nth-child(4) li:nth-child(2) .skill-name": "Basic Network Security",
+    ".skills-category:nth-child(4) li:nth-child(3) .skill-name": "Automated Backups",
+    "#contact-heading": "Let's Start a Project",
+    ".contact-subtitle": "Have a project in mind or want to talk about infrastructure, DevOps, or software development? Connect with me.",
+    ".contact-buttons-container a:nth-child(1)": `<svg class="icon btn-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>\n            Fill Contact Form`,
+    ".contact-buttons-container a:nth-child(2)": `<svg class="icon btn-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" /></svg>\n            Explore my GitHub`,
+    ".copyright": "&copy; <span id=\"current-year\"></span> SrRiv. All rights reserved. Designed with universal accessibility principles in mind."
+  },
+  es: {} // Se llena en runtime
+};
+
+function translatePage(lang) {
+  const dict = translations[lang];
+  if (!dict) return;
+  for (const [selector, text] of Object.entries(dict)) {
+    const el = document.querySelector(selector);
+    if (el) {
+      el.innerHTML = text;
+    }
+  }
+  document.documentElement.lang = lang;
+  initCurrentYear(); // Restaurar el año actual en el nuevo footer
+}
+
+/**
+ * Inicializa el switch de idioma, auto-captura los textos originales (ES)
+ * y restaura la preferencia desde localStorage.
+ */
+function initLanguageSwitch() {
+  const langSwitch = document.getElementById('lang-switch');
+  const langTrack = document.getElementById('lang-track');
+  const labelEs = document.getElementById('label-es');
+  const labelEn = document.getElementById('label-en');
+
+  if (!langSwitch || !langTrack) return;
+
+  // 1. Llenar diccionario de español con el HTML original
+  for (const selector of Object.keys(translations.en)) {
+    const el = document.querySelector(selector);
+    if (el) {
+      translations.es[selector] = el.innerHTML;
+    }
+  }
+
+  // 2. Aplicar estado visual en base a idioma 'en' o 'es'
+  const applyLanguage = (isEnglish) => {
+    langTrack.classList.toggle('en-active', isEnglish);
+    labelEs.classList.toggle('active', !isEnglish);
+    labelEn.classList.toggle('active', isEnglish);
+    translatePage(isEnglish ? 'en' : 'es');
+  };
+
+  // 3. Restaurar preferencia guardada
+  const savedLang = localStorage.getItem('language');
+  if (savedLang === 'en') {
+    applyLanguage(true);
+  }
+
+  // 4. Manejar click
+  langSwitch.addEventListener('click', () => {
+    const isCurrentlyEnglish = langTrack.classList.contains('en-active');
+    const newStateEnglish = !isCurrentlyEnglish;
+
+    applyLanguage(newStateEnglish);
+    localStorage.setItem('language', newStateEnglish ? 'en' : 'es');
+  });
+}

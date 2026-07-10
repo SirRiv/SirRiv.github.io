@@ -379,6 +379,72 @@ body {
     height: 20px;
 }
 
+/* Switch de idioma ES / EN */
+.lang-switch {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-glass);
+    border-radius: 50px;
+    padding: 4px 6px;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    user-select: none;
+}
+
+.lang-switch:hover {
+    border-color: var(--color-secondary);
+    background: rgba(6, 182, 212, 0.08);
+}
+
+.lang-label {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: var(--text-muted);
+    transition: var(--transition-smooth);
+    line-height: 1;
+}
+
+.lang-label.active {
+    color: var(--color-secondary-light);
+}
+
+.lang-track {
+    position: relative;
+    width: 32px;
+    height: 18px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 50px;
+    border: 1px solid var(--border-glass);
+    transition: var(--transition-smooth);
+    flex-shrink: 0;
+}
+
+.lang-track.en-active {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    border-color: transparent;
+    box-shadow: 0 0 10px var(--glow-secondary);
+}
+
+.lang-thumb {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--text-bright);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.4);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.lang-track.en-active .lang-thumb {
+    transform: translateX(14px);
+}
+
 /* ==========================================================================
    5. SECCIÓN HERO (ESTÉTICA IMPACTANTE)
    ========================================================================== */
